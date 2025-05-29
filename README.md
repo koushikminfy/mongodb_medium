@@ -29,9 +29,7 @@ intersion of samples data:
   ![image](https://github.com/user-attachments/assets/e1f8d386-d001-4bbb-8bd6-24d703d3578e)
 
 **2. Average Price of Products per Tag:**
- 
-    
-    
+ ## code:
     db.products.aggregate([
   {
     $unwind: "$tags"
@@ -61,9 +59,7 @@ intersion of samples data:
 
 
 **3. Products Added in February 2023:**
-   
-    
-    
+   ## code 
     db.products.aggregate([
   {
     $match: {
