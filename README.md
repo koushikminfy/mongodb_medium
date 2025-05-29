@@ -17,6 +17,8 @@ intersion of samples data:
 ##  Medium assignment
 
 **1. Total Quantity of Products by Supplier:**
+     
+      
       db.products.aggregate([{$group: {_id: "$supplier.name",totalQuantity: { $sum: "$quantity" }}}]);
 
   # Description : 
@@ -27,6 +29,7 @@ intersion of samples data:
   ![image](https://github.com/user-attachments/assets/e1f8d386-d001-4bbb-8bd6-24d703d3578e)
 
 **2. Average Price of Products per Tag:**
+ 
     db.products.aggregate([
   {
     $unwind: "$tags"
@@ -56,6 +59,7 @@ intersion of samples data:
 
 
 **3. Products Added in February 2023:**
+   
     db.products.aggregate([
   {
     $match: {
