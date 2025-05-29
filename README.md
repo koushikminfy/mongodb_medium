@@ -18,8 +18,8 @@ intersion of samples data:
 
 **1. Total Quantity of Products by Supplier:**
      
-      
-      db.products.aggregate([{$group: {_id: "$supplier.name",totalQuantity: { $sum: "$quantity" }}}]);
+  
+    db.products.aggregate([{$group: {_id: "$supplier.name",totalQuantity: { $sum: "$quantity" }}}]);
 
   # Description : 
   used  functions 
@@ -30,6 +30,8 @@ intersion of samples data:
 
 **2. Average Price of Products per Tag:**
  
+    
+    
     db.products.aggregate([
   {
     $unwind: "$tags"
@@ -60,6 +62,8 @@ intersion of samples data:
 
 **3. Products Added in February 2023:**
    
+    
+    
     db.products.aggregate([
   {
     $match: {
