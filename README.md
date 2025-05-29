@@ -30,22 +30,7 @@ intersion of samples data:
 
 **2. Average Price of Products per Tag:**
  ## code:
-    db.products.aggregate([
-  {
-    $unwind: "$tags"
-  },
-  {
-    $group: {
-      _id: "$tags", 
-      averagePrice: { $avg: "$price" }
-    }
-  },
-  {
-    $sort: {
-      averagePrice: -1 
-    }
-  }
-]);
+    db.products.aggregate([{$unwind: "$tags"},{$group: {_id: "$tags", averagePrice: { $avg: "$price" }}},{$sort: {averagePrice: -1 }}]);
   # Description :
   $unwind: Breaks down each array element in tags into separate documents.
 
@@ -60,29 +45,7 @@ intersion of samples data:
 
 **3. Products Added in February 2023:**
    ## code 
-    db.products.aggregate([
-  {
-    $match: {
-      date_added: {
-        $gte: new Date("2023-02-01T00:00:00Z"),
-        $lt: new Date("2023-03-01T00:00:00Z")
-      }
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      name: 1,
-      category: 1,
-      formattedDateAdded: {
-        $dateToString: {
-          format: "%Y-%m-%d",
-          date: "$date_added"
-        }
-      }
-    }
-  }
-]);
+    db.products.aggregate([{$match: {date_added: {$gte: new Date("2023-02-01T00:00:00Z"),$lt: new Date("2023-03-01T00:00:00Z")}}},{$project: {_id: 0,name: 1,category: 1,formattedDateAdded: {$dateToString: {format: "%Y-%m-%d",date: "$date_added"}}}}]);
 
 # Description :
 $match: Filters products whose date_added falls between "2023-02-01" and "2023-02-28".
